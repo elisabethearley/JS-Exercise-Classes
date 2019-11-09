@@ -48,7 +48,7 @@ class Person {
   }
 
   eat(someFood) {
-    if (this.stomach.length <= 10) {
+    if (this.stomach.length <= 9) {
       this.stomach.push(someFood);
     }
   }
@@ -58,12 +58,20 @@ class Person {
   toString() {
     return `${this.name}, ${this.age}`;
   }
-
-  const newPerson = new Person {
-    name: 'Tali',
-    age: '25'
-  }
 }
+
+const newPerson = new Person({
+  name:'Tali',
+  age: 25,
+  stomach: ['apple', 'bread', 'banana', 'spaghetti', 
+  'lasagna', 'pizza', 'hot dog', 'brownie', 'key lime pie']
+});
+
+console.log(newPerson);
+console.log(newPerson.eat());
+console.log(newPerson.poop());
+console.log(newPerson.toString());
+
 
 /*
   TASK 2
