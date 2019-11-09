@@ -52,6 +52,17 @@ class Person {
       this.stomach.push(someFood);
     }
   }
+  poop() {
+    this.stomach = [];
+  }
+  toString() {
+    return `${this.name}, ${this.age}`;
+  }
+
+  const newPerson = new Person {
+    name: 'Tali',
+    age: '25'
+  }
 }
 
 /*
