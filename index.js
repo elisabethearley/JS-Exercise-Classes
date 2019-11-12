@@ -153,11 +153,11 @@ class Lambdasian {
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
 class Instructor extends Lambdasian {
-  constructor(obj, obj2) {
-    super(obj);
-    this.specialty = obj2.specialty;
-    this.favLanguage = obj2.favLanguage;
-    this.catchPhrase = obj2.catchPhrase;
+  constructor(lambdasionAttr) {
+    super(lambdasionAttr);
+    this.specialty = lambdasionAttr.specialty;
+    this.favLanguage = lambdasionAttr.favLanguage;
+    this.catchPhrase = lambdasionAttr.catchPhrase;
   }
   demo(subject) {
     return `Today we are learning about ${subject}.`;
@@ -184,20 +184,20 @@ class Instructor extends Lambdasian {
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
 class Student extends Lambdasian {
-  constructor(obj, obj3){
+  constructor(obj){
     super(obj);
-    this.previousBackground = obj3.previousBackground;
-    this.classname = obj3.classname;
-    this.favSubjects = obj3.favSubjects;
+    this.previousBackground = obj.previousBackground;
+    this.className = obj.className;
+    this.favSubjects = obj.favSubjects;
   }
   listSubjects() {
     return `Loving ${this.favSubjects}!`;
   }
-  PRAssignment(student, subject) {
-    return `${student.name} has submitted a PR for ${subject}`;
+  PRAssignment(subject) {
+    return `${this.name} has submitted a PR for ${subject}`;
   }
-  sprintChallenge(student, subject) {
-    return `${student.name} has begun sprint challenge on ${subject}.`
+  sprintChallenge(subject) {
+    return `${this.name} has begun sprint challenge on ${subject}.`
   } 
 }
 
@@ -215,18 +215,35 @@ class Student extends Lambdasian {
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
 class ProjectManager extends Instructor {
-  constructor(obj2, obj4) {
-    super(obj2);
-    this.gradClassName = obj4.gradClassName;
-    this.favInstructor = obj4.favInstructor;
+  constructor(obj) {
+    super(obj);
+    this.gradClassName = obj.gradClassName;
+    this.favInstructor = obj.favInstructor;
   }
-  standUp(name, channel) {
-    return `${name} announces to ${channel}, @channel standy times!`;
+  standUp(channel) {
+    return `${this.name} announces to ${channel}, @channel standy times!`;
   }
-  debugsCode(name, student, subject) {
-    return `${name} debugs ${student.name}'s code on ${subject}`;
+  debugsCode(student, subject) {
+    return `${this.name} debugs ${student.name}'s code on ${subject}`;
   }
 }
+
+const student = new Lambdasian ({
+  name: 'lizzy',
+  age: 32, 
+  location: 'atlanta'
+})
+
+const instructor = new Instructor ({
+  specialty: 'whatever',
+  favLanguage: 'javascript',
+  catchPhrase: 'You can do it!'
+})
+
+console.log('STUDENT: ', student);
+console.log(student instanceof Lambdasian);
+console.log(instructor);
+
 
 /*
   STRETCH PROBLEM (no tests!)
